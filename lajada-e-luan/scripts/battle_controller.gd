@@ -12,7 +12,7 @@ var battle_over = false
 @onready var guard_button = $UI/GuardButton
 
 func _ready():
-	print("Battle script is running")
+	reset_battle()
 	update_ui()
 
 func update_ui():
@@ -69,6 +69,21 @@ func end_battle(result_text):
 	guard_button.disabled = true
 
 
+#Reset function
+
+func reset_battle():
+	player_hp = 10
+	enemy_hp = 10
+	player_guarding = false
+	battle_over = false
+	status_label.text = "Player Turn"
+	attack_button.disabled = false
+	guard_button.disabled = false
+	
+	update_ui()
+	
+
+#Button related stuff
 func _on_attack_button_pressed():
 	print("Attack button pressed")
 	player_attack()
@@ -76,3 +91,7 @@ func _on_attack_button_pressed():
 func _on_guard_button_pressed():
 	print("Guard button pressed")
 	player_guard()
+
+
+func _on_reset_button_pressed() -> void:
+	reset_battle()
