@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="CharacterData" format=3 uid="uid://demdd4y7sj52g"]
+
+[ext_resource type="Script" uid="uid://p30ke1amm2oi" path="res://scripts/data/character_data.gd" id="1_j5aas"]
+
+[resource]
+script = ExtResource("1_j5aas")
+character_name = "Arden Vale"
+metadata/_custom_type_script = "uid://p30ke1amm2oi"
