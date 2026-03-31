@@ -109,7 +109,7 @@ func use_pulse() -> void:
 	
 	gain_energy(player_data.pulse_energy_gain)
 	
-	play_pulse_animation()
+	await play_pulse_animation()
 	enemy_hp -= player_data.pulse_damage
 	enemy_hp = max(enemy_hp, 0)
 
@@ -189,6 +189,8 @@ func use_discharge() -> void:
 		set_enemy_dead()
 		end_battle("Victory!")
 		return
+	
+	enemy_turn()
 
 func enemy_turn() -> void:
 	if battle_over:
@@ -201,7 +203,7 @@ func enemy_turn() -> void:
 		damage = max(damage, 0)
 		player_guarding = false
 		
-		gain_energy(player_data.stabilze_energy_gain)
+		gain_energy(player_data.stabilize_energy_gain)
 
 	player_hp -= damage
 	player_hp = max(player_hp, 0)
