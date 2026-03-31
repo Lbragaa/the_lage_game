@@ -5,6 +5,7 @@
 [ext_resource type="Resource" uid="uid://demdd4y7sj52g" path="res://data/arden_data.tres" id="2_lpir7"]
 [ext_resource type="Texture2D" uid="uid://blbh4x1651jhc" path="res://assets/characters/Sexo2_player.png" id="3_lpir7"]
 [ext_resource type="Texture2D" uid="uid://dhb12tvs8l2m3" path="res://assets/characters/Sexo2_enemy.png" id="4_6vh42"]
+[ext_resource type="Texture2D" uid="uid://p3amwvtjptnj" path="res://assets/skills/Sexo2_pulseball.png" id="6_6vh42"]
 
 [node name="Battle" type="Node2D" unique_id=569071049]
 script = ExtResource("1_dn72j")
@@ -44,11 +45,11 @@ offset_bottom = 49.0
 text = "Player Turn"
 
 [node name="EnergyLabel" type="Label" parent="UI" unique_id=471083185]
-offset_left = 136.0
-offset_top = 556.0
-offset_right = 207.0
-offset_bottom = 579.0
-text = "Mana: 10"
+offset_left = 140.0
+offset_top = 557.0
+offset_right = 211.0
+offset_bottom = 580.0
+text = "Energy Level: 0/10"
 
 [node name="PulseButton" type="Button" parent="UI" unique_id=1362656766]
 offset_left = 23.0
@@ -58,10 +59,10 @@ offset_bottom = 646.0
 text = "Pulse"
 
 [node name="StabilizeButton" type="Button" parent="UI" unique_id=1458548558]
-offset_left = 102.0
-offset_top = 617.0
-offset_right = 158.0
-offset_bottom = 648.0
+offset_left = 93.0
+offset_top = 614.0
+offset_right = 166.0
+offset_bottom = 645.0
 text = "Stabilize"
 
 [node name="ResetButton" type="Button" parent="UI" unique_id=2010175434]
@@ -72,12 +73,19 @@ offset_bottom = 663.0
 text = "Reset Battle"
 
 [node name="OverloadButton" type="Button" parent="UI" unique_id=1867029609]
-offset_left = 181.0
-offset_top = 616.0
-offset_right = 221.0
-offset_bottom = 647.0
-text = "Ultimate: Overload
+offset_left = 177.0
+offset_top = 613.0
+offset_right = 256.0
+offset_bottom = 644.0
+text = "Overload
 "
+
+[node name="DischargeButton" type="Button" parent="UI" unique_id=1180818114]
+offset_left = 266.0
+offset_top = 613.0
+offset_right = 427.0
+offset_bottom = 644.0
+text = "Ultimate: Discharge"
 
 [node name="PlayerSprite" type="Sprite2D" parent="UI" unique_id=641113404]
 z_index = -1
@@ -92,14 +100,29 @@ scale = Vector2(0.4581545, 0.4581545)
 texture = ExtResource("4_6vh42")
 
 [node name="FireballSprite" type="Sprite2D" parent="UI" unique_id=1690019570]
+visible = false
 position = Vector2(421, 444.00003)
 scale = Vector2(0.13565892, 0.1356589)
 texture = ExtResource("2_a12nh")
 
-[connection signal="pressed" from="UI/PulseButton" to="." method="_on_pulse_button_pressed"]
+[node name="PulseballSprite" type="Sprite2D" parent="UI" unique_id=200609152]
+visible = false
+position = Vector2(478.00003, 513)
+scale = Vector2(0.13565892, 0.1356589)
+texture = ExtResource("6_6vh42")
+
+[node name="EnergyBar" type="HBoxContainer" parent="UI" unique_id=1926182257]
+offset_left = 328.0
+offset_top = 548.0
+offset_right = 368.0
+offset_bottom = 588.0
+theme_override_constants/separation = 4
+
 [connection signal="pressed" from="UI/PulseButton" to="." method="_on_attack_button_pressed"]
-[connection signal="pressed" from="UI/StabilizeButton" to="." method="_on_stabilize_button_pressed"]
+[connection signal="pressed" from="UI/PulseButton" to="." method="_on_pulse_button_pressed"]
 [connection signal="pressed" from="UI/StabilizeButton" to="." method="_on_guard_button_pressed"]
+[connection signal="pressed" from="UI/StabilizeButton" to="." method="_on_stabilize_button_pressed"]
 [connection signal="pressed" from="UI/ResetButton" to="." method="_on_reset_button_pressed"]
-[connection signal="pressed" from="UI/OverloadButton" to="." method="_on_overload_button_pressed"]
 [connection signal="pressed" from="UI/OverloadButton" to="." method="_on_skill_button_pressed"]
+[connection signal="pressed" from="UI/OverloadButton" to="." method="_on_overload_button_pressed"]
+[connection signal="pressed" from="UI/DischargeButton" to="." method="_on_discharge_button_pressed"]
